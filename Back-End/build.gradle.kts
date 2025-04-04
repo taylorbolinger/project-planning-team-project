@@ -13,7 +13,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+//		languageVersion = JavaLanguageVersion.of(18)
 	}
 }
 
@@ -31,7 +31,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.session:spring-session-core")
-	runtimeOnly("com.mysql:mysql-connector-j")
+	runtimeOnly("org.postgresql:postgresql")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -41,6 +41,7 @@ dependencies {
 }
 
 kotlin {
+	jvmToolchain(18)
 	compilerOptions {
 		freeCompilerArgs.addAll("-Xjsr305=strict")
 	}
