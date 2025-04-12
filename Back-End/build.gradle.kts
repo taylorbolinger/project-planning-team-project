@@ -8,12 +8,16 @@ plugins {
 	kotlin("plugin.jpa") version "1.9.25"
 }
 
-group = "com.example"
+group = "com.team1.dev"
 version = "0.0.1-SNAPSHOT"
 
 java {
 	toolchain {
+<<<<<<< HEAD
 		languageVersion = JavaLanguageVersion.of(18)
+=======
+     	languageVersion = JavaLanguageVersion.of(18)
+>>>>>>> f1c47f97b1a87481ec59b001403fe40c14716800
 	}
 }
 
@@ -31,6 +35,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.session:spring-session-core")
+	implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("org.postgresql:postgresql")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -39,7 +45,6 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
-
 kotlin {
 	jvmToolchain(18)
 	compilerOptions {
@@ -47,21 +52,24 @@ kotlin {
 	}
 }
 
+
+
 allOpen {
 	annotation("jakarta.persistence.Entity")
 	annotation("jakarta.persistence.MappedSuperclass")
 	annotation("jakarta.persistence.Embeddable")
+
 }
 
-tasks.withType<Test> {
-	useJUnitPlatform()
-}
-
-tasks.test {
-	outputs.dir(project.extra["snippetsDir"]!!)
-}
-
-tasks.asciidoctor {
-	inputs.dir(project.extra["snippetsDir"]!!)
-	dependsOn(tasks.test)
-}
+//tasks.withType<Test> {
+//	useJUnitPlatform()
+//}
+//
+//tasks.test {
+//	outputs.dir(project.extra["snippetsDir"]!!)
+//}
+//
+//tasks.asciidoctor {
+//	inputs.dir(project.extra["snippetsDir"]!!)
+//	dependsOn(tasks.test)
+//}
