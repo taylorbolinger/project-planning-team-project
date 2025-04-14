@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'project-details', component: ProjectDetailsPageComponent }, // Project details page
   { path: 'requirements', component: RequirementsPageComponent }, // Requirements page
   { path: 'effort-tracking', component: EffortTrackingSummaryPageComponent }, // Effort tracking summary page
-  { path: 'individual-project', component: IndividualProjectDashboardComponent }, // Individual project dashboard
+  { path: 'individual-project/:id', component: IndividualProjectDashboardComponent }, // Individual project dashboard with dynamic ID
   { path: '**', redirectTo: 'login' } // Wildcard route redirects to login
 ];
 

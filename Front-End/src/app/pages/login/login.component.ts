@@ -1,16 +1,22 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 @Component({
-  selector: 'app-login', // Used as a custom HTML tag <app-login>
-  templateUrl: './login.component.html', // Links to the HTML file
-  styleUrls: ['./login.component.css'] // Links to the CSS file
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  standalone: true, // Mark this as a standalone component
+  imports: [FormsModule] // Add FormsModule here
 })
 export class LoginComponent {
-  // Component logic goes here
   username: string = '';
   password: string = '';
 
+  constructor(private router: Router) {}
+
   login() {
     console.log('Logging in with', this.username, this.password);
+    this.router.navigate(['/dashboard']);
   }
 }
