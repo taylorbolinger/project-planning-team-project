@@ -1,4 +1,4 @@
-package com.team1.dev.Entities
+package com.team1.dev.entities
 
 import jakarta.persistence.*
 
