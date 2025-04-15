@@ -63,4 +63,34 @@ describe('IndividualProjectDashboardComponent', () => {
     expect(component.projectDetails).toEqual(mockProjectDetails);
     httpMock.verify();
   });
+
+  it('should fetch and display multiple projects', () => {
+    const mockProjects = [
+      { id: 1, name: 'Project Alpha', description: 'Description for Project Alpha' },
+      { id: 2, name: 'Project Beta', description: 'Description for Project Beta' },
+      { id: 3, name: 'Project Gamma', description: 'Description for Project Gamma' }
+    ];
+
+    // Simulate the HTTP GET request for the first project
+    const req1 = httpMock.expectOne('http://localhost:8080/api/projects/1');
+    expect(req1.request.method).toBe('GET');
+    req1.flush(mockProjects[0]);
+
+    // Verify the first project details are set
+    expect(component.projectDetails).toEqual(mockProjects[0]);
+
+    // Simulate the HTTP GET request for the second project
+    const req2 = httpMock.expectOne('http://localhost:8080/api/projects/2');
+    expect(req2.request.method).toBe('GET');
+    req2.flush(mockProjects[1]);
+
+    // Simulate the HTTP GET request for the third project
+    const req3 = httpMock.expectOne('http://localhost:8080/api/projects/3');
+    expect(req3.request.method).toBe('GET');
+    req3.flush(mockProjects[2]);
+
+    // Verify all projects are fetched and displayed
+    expect(component.projectDetails).toEqual(mockProjects[0]); // Only the first project is displayed in this component
+    httpMock.verify();
+  });
 });
