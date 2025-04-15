@@ -1,20 +1,24 @@
-package com.team1.dev.Entities
+package com.team1.dev.entities
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "user_password_resets")
-data class UserPasswordReset(
+@Table(name = "project_risks")
+data class ProjectRisk(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
 
-    @Column(name = "user_id", nullable = false)
-    val userId: Int,
+    @ManyToOne
+    @JoinColumn(name = "project_id", nullable = false)
+    val project: Project,
 
-    @Column(name = "reset_token", nullable = false)
-    val resetToken: String,
+    @Column(name = "risk_description", nullable = false)
+    val desc: String,
+
+    @Column(name = "risk_status", nullable = false,)
+    val status: Int, // 0 = active, 1 = mitigated, etc.
 
     @Column(name = "created_at", nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),

@@ -1,7 +1,7 @@
 package com.team1.dev.controllers
 
-import com.team1.dev.Entities.ProjectManager
-import com.team1.dev.services.ProjectManagerService
+import com.team1.dev.entities.ProjectManager // Fixed package name for entities
+import com.team1.dev.services.ProjectManagerService // Fixed package name for services
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
