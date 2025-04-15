@@ -1,7 +1,7 @@
 package com.team1.dev.services
 
-import com.team1.dev.Entities.Project
-import com.team1.dev.Entities.ProjectRisk
+import com.team1.dev.entities.Project
+import com.team1.dev.entities.ProjectRisk
 import com.team1.dev.repositories.ProjectRiskRepository
 import com.team1.dev.repositories.ProjectRepository
 import org.springframework.beans.factory.annotation.Autowired

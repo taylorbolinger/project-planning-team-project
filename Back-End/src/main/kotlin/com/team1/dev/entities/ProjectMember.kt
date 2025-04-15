@@ -1,11 +1,11 @@
-package com.team1.dev.Entities
+package com.team1.dev.entities
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "project_risks")
-data class ProjectRisk(
+@Table(name = "project_members")
+data class ProjectMember(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,
@@ -14,11 +14,14 @@ data class ProjectRisk(
     @JoinColumn(name = "project_id", nullable = false)
     val project: Project,
 
-    @Column(name = "risk_description", nullable = false)
-    val desc: String,
+    @Column(name = "fname", nullable = false)
+    val firstName: String,
 
-    @Column(name = "risk_status", nullable = false,)
-    val status: Int, // 0 = active, 1 = mitigated, etc.
+    @Column(name = "lname", nullable = false)
+    val lastName: String,
+
+    @Column(name = "email", nullable = false, unique = true)
+    val email: String,
 
     @Column(name = "created_at", nullable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),

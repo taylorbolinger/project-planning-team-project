@@ -1,7 +1,7 @@
 package com.team1.dev.controllers
 
-import com.team1.dev.Entities.Project
-import com.team1.dev.Entities.ProjectRisk
+import com.team1.dev.entities.Project
+import com.team1.dev.entities.ProjectRisk
 import com.team1.dev.services.ProjectService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*

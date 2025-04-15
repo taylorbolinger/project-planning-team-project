@@ -1,11 +1,13 @@
-package com.team1.dev.Entities
+package com.team1.dev.entities
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
 
 @Entity
 @Table(name = "project_managers")
-data class ProjectManager(
+data class ProjectManager (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -15,10 +17,10 @@ data class ProjectManager(
     val email: String,
 
     @Column(name = "username", nullable = false, unique = true)
-    val username: String,
+    val userName : String,
 
     @Column(name = "password", nullable = false)
-    val password: String,
+    val passWord: String,
 
     @Column(name = "created_at", nullable = false, updatable = false)
     val createdAt: LocalDateTime = LocalDateTime.now(),
@@ -29,3 +31,4 @@ data class ProjectManager(
     @OneToMany(mappedBy = "manager", cascade = [CascadeType.ALL], orphanRemoval = true)
     val projects: List<Project> = emptyList()
 )
+

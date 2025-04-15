@@ -1,12 +1,15 @@
 package com.team1.dev.services
 
-import com.team1.dev.Entities.ProjectManager
+import com.team1.dev.entities.ProjectManager
 import com.team1.dev.repositories.ProjectManagerRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
+import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 
 @Service
-class ProjectManagerService @Autowired constructor(
+class ProjectManagerService  @Autowired constructor(
     private val projectManagerRepository: ProjectManagerRepository
 ) {
 
@@ -32,4 +35,5 @@ class ProjectManagerService @Autowired constructor(
             false
         }
     }
+
 }
