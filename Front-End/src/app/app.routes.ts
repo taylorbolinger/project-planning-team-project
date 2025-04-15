@@ -1,21 +1,19 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { LoginComponent } from './pages/login/login.component';
 import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
 import { RequirementsPageComponent } from './pages/requirements-page/requirements-page.component';
 import { EffortTrackingSummaryPageComponent } from './pages/effort-tracking-summary-page/effort-tracking-summary-page.component';
 import { IndividualProjectDashboardComponent } from './pages/individual-project-dashboard/individual-project-dashboard.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Default route redirects to login
-  { path: 'login', component: LoginComponent }, // Login page
-  { path: 'dashboard', component: DashboardComponent }, // Dashboard page
-  { path: 'project-details', component: ProjectDetailsPageComponent }, // Project details page
-  { path: 'requirements', component: RequirementsPageComponent }, // Requirements page
-  { path: 'effort-tracking', component: EffortTrackingSummaryPageComponent }, // Effort tracking summary page
-  { path: 'individual-project/:id', component: IndividualProjectDashboardComponent }, // Individual project dashboard with dynamic ID
-  { path: '**', redirectTo: 'login' } // Wildcard route redirects to login
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'project-details-page', component: ProjectDetailsPageComponent }, // Route for Project Details
+  { path: 'requirements-page', component: RequirementsPageComponent }, // Route for Requirements
+  { path: 'effort-tracking-summary-page', component: EffortTrackingSummaryPageComponent }, // Route for Effort Tracking
+  { path: 'individual-project-dashboard/:id', component: IndividualProjectDashboardComponent }, // Dynamic route for individual project
+  { path: '**', redirectTo: 'dashboard' } // Wildcard route
 ];
 
 @NgModule({

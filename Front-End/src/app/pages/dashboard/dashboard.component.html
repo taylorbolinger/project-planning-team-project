@@ -10,7 +10,7 @@
   <div *ngIf="projects.length === 0">Loading projects...</div>
 
   <!-- Dynamically render project cards -->
-  <div *ngFor="let project of projects" class="project-card" [routerLink]="['/individual-project', project.id]">
+  <div *ngFor="let project of projects" class="project-card" [routerLink]="['/individual-project-dashboard', project.id]">
     {{ project.name }}
   </div>
 </main>
