@@ -33,6 +33,7 @@ dependencies {
 	implementation("org.springframework.session:spring-session-core")
 	implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
 	runtimeOnly("org.postgresql:postgresql")
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
