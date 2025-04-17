@@ -1,5 +1,7 @@
 package com.team1.dev.entities
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import java.time.LocalDateTime
 import org.springframework.security.core.GrantedAuthority
@@ -29,6 +31,7 @@ data class ProjectManager (
     var updatedAt: LocalDateTime = LocalDateTime.now(),
 
     @OneToMany(mappedBy = "manager", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JsonIgnore
     val projects: List<Project> = emptyList()
 )
 
