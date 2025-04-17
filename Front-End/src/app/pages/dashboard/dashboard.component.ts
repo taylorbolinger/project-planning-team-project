@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common'; // Import CommonModule
-import { RouterModule } from '@angular/router'; // Import RouterModule
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
-  imports: [CommonModule, RouterModule] // Add RouterModule here
+  imports: [CommonModule, RouterModule]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   projects: any[] = []; // Array to store the fetched projects
 
   constructor(private http: HttpClient) {}
@@ -20,13 +20,10 @@ export class DashboardComponent {
   }
 
   fetchProjects(): void {
-    const headers = {
-      Authorization: 'Basic ' + btoa('user:password') // Base64-encoded username:password
-    };
-  
-    this.http.get<any[]>('http://localhost:8080/api/projects/all', { headers }).subscribe({
+    this.http.get<any[]>('http://localhost:8080/api/projects/all').subscribe({
       next: (data) => {
-        this.projects = data;
+        this.projects = data; // Assign the fetched projects to the array
+        console.log('Projects fetched:', this.projects);
       },
       error: (err) => {
         console.error('Error fetching projects:', err);

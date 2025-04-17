@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Import CommonModule
@@ -11,13 +11,14 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
   standalone: true,
   imports: [CommonModule, RouterModule] // Add CommonModule and RouterModule
 })
-export class IndividualProjectDashboardComponent {
+export class IndividualProjectDashboardComponent implements OnInit {
   projectId: string | null = null;
   projectDetails: any = null;
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
+    // Retrieve the project ID from the route parameters
     this.projectId = this.route.snapshot.paramMap.get('id');
     if (this.projectId) {
       this.fetchProjectDetails(this.projectId);
@@ -27,7 +28,8 @@ export class IndividualProjectDashboardComponent {
   fetchProjectDetails(id: string): void {
     this.http.get(`http://localhost:8080/api/projects/${id}`).subscribe({
       next: (data) => {
-        this.projectDetails = data;
+        this.projectDetails = data; // Assign the fetched project details
+        console.log('Project Details:', this.projectDetails);
       },
       error: (err) => {
         console.error('Error fetching project details:', err);
