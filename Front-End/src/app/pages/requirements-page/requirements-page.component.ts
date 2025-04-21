@@ -15,6 +15,8 @@ export class RequirementsPageComponent implements OnInit {
   projectId: string | null = null;
   projectDetails: any = null; // To store the fetched project details
   requirements: any[] = []; // To store the filtered requirements
+  functionalRequirements: any[] = []; // To store functional requirements
+  nonFunctionalRequirements: any[] = []; // To store non-functional requirements
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
@@ -43,12 +45,21 @@ export class RequirementsPageComponent implements OnInit {
   fetchAllRequirements(): void {
     console.log(`Fetching all requirements for Project id ${this.projectId}`); // Log the project ID
 
-    this.http.get<any[]>(`http://localhost:8080/api/project-requirements/all`).subscribe({
+    this.http.get<any[]>(`http://localhost:8080/api/project-requirements`).subscribe({
       next: (data: any[]) => {
         console.log('All Requirements API Response:', data); // Log the API response
+        // Convert projectId to a number for comparison
+        const projectIdNumber = Number(this.projectId);
+
         // Filter requirements by project ID
-        this.requirements = data.filter(requirement => requirement.project.id === this.projectId);
-        console.log('Filtered Requirements:', this.requirements); // Log the filtered requirements
+        const filteredRequirements = data.filter(requirement => requirement.project.id === projectIdNumber);
+
+        // Split requirements into functional and non-functional
+        this.functionalRequirements = filteredRequirements.filter(req => req.type === 0);
+        this.nonFunctionalRequirements = filteredRequirements.filter(req => req.type === 1);
+
+        console.log('Functional Requirements:', this.functionalRequirements); // Log functional requirements
+        console.log('Non-Functional Requirements:', this.nonFunctionalRequirements); // Log non-functional requirements
       },
       error: (err) => {
         console.error('Error fetching requirements:', err); // Log any errors

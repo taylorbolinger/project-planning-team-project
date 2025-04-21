@@ -65,19 +65,18 @@ export class ProjectDetailsPageComponent implements OnInit {
     });
   }
 
-  // fetchAllProjectRisks(): void {
-  //   //console.log('Fetching all project risks'); // Log the action
-
-  //   this.http.get<any[]>(`http://localhost:8080/api/project-risks`).subscribe({
-  //     next: (data: any[]) => {
-  //       //console.log('All Project Risks API Response:', data); // Log the API response
-  //       // Filter risks by project.project.id
-  //       this.projectRisks = data.filter(risk => risk.project.id === this.projectDetails.id);
-  //       console.log('Filtered Project Risks:', this.projectRisks); // Log the filtered risks
-  //     },
-  //     error: (err) => {
-  //       console.error('Error fetching project risks:', err); // Log any errors
-  //     }
-  //   });
-  // }
+   fetchAllProjectRisks(): void {
+     //console.log('Fetching all project risks'); // Log the actio
+     this.http.get<any[]>(`http://localhost:8080/api/project-risks`).subscribe({
+       next: (data: any[]) => {
+         //console.log('All Project Risks API Response:', data); // Log the API response
+         // Filter risks by project.project.id
+         this.projectRisks = data.filter(risk => risk.project.id === this.projectDetails.id);
+         console.log('Filtered Project Risks:', this.projectRisks); // Log the filtered risks
+       },
+       error: (err) => {
+         console.error('Error fetching project risks:', err); // Log any errors
+       }
+     });
+   }
 }
