@@ -15,6 +15,8 @@ class ProjectManagerController @Autowired constructor(
     @GetMapping("/all")
     fun getAllProjectManagers(): List<ProjectManager> = projectManagerService.getAllProjectManagers()
 
+    @GetMapping("/sortedByProjectId")
+    fun getAllProjectManagersSortedByProjectId(): List<ProjectManager> = projectManagerService.getAllProjectManagersSortedByProjectId()
 
     @GetMapping("/{id}")
     fun getProjectManagerById(@PathVariable id: Long): ResponseEntity<ProjectManager> {
