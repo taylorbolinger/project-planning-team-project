@@ -13,8 +13,8 @@
     <p *ngIf="projectDetails">{{ projectDetails.description }}</p>
 
     <div class="buttons">
-        <a class="btn-card" [routerLink]="'/project-details-page'">Project Details</a>
-        <a class="btn-card" [routerLink]="'/requirements-page'">Project Requirements</a>
-        <a class="btn-card" [routerLink]="'/effort-tracking-summary-page'">Effort Tracking & Summary</a>
+        <a class="btn-card" [routerLink]="['/project-details-page', projectDetails.id]">Project Details</a>
+        <a class="btn-card" [routerLink]="['/requirements-page', projectDetails.id]">Project Requirements</a>
+        <a class="btn-card" [routerLink]="['/effort-tracking-summary-page', projectDetails.id]">Effort Tracking & Summary</a>
     </div>
 </main>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { RouterModule } from '@angular/router'; // Import RouterModule
@@ -15,7 +15,7 @@ export class IndividualProjectDashboardComponent implements OnInit {
   projectId: string | null = null;
   projectDetails: any = null;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     // Retrieve the project ID from the route parameters
@@ -35,5 +35,10 @@ export class IndividualProjectDashboardComponent implements OnInit {
         console.error('Error fetching project details:', err);
       }
     });
+  }
+
+  navigateToProjectDetails(projectId: string): void {
+    console.log('Navigating to Project Details with ID:', projectId);
+    this.router.navigate(['/project-details-page', projectId]);
   }
 }

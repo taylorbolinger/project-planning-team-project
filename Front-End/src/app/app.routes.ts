@@ -10,9 +10,9 @@ import { NewProjectComponent } from './pages/new-project/new-project.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'project-details-page', component: ProjectDetailsPageComponent }, // Route for Project Details
-  { path: 'requirements-page', component: RequirementsPageComponent }, // Route for Requirements
-  { path: 'effort-tracking-summary-page', component: EffortTrackingSummaryPageComponent }, // Route for Effort Tracking
+  { path: 'project-details-page/:id', component: ProjectDetailsPageComponent }, // Route for Project Details
+  { path: 'requirements-page/:id', component: RequirementsPageComponent }, // Route for Requirements
+  { path: 'effort-tracking-summary-page/:id', component: EffortTrackingSummaryPageComponent }, // Route for Effort Tracking
   { path: 'individual-project-dashboard/:id', component: IndividualProjectDashboardComponent }, // Dynamic route for individual project
   { path: 'new-project', component: NewProjectComponent }, // Route for New Project
   { path: '**', redirectTo: 'dashboard' } // Wildcard route

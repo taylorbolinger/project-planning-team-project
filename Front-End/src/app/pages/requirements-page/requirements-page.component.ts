@@ -1,14 +1,40 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; // Import RouterModule
-import { Router } from 'express';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common'; // Import CommonModule for *ngIf and *ngFor
+import { RouterModule } from '@angular/router'; // Import RouterModule for routerLink
 
 @Component({
   selector: 'app-requirements-page',
-  imports: [RouterModule], // Add RouterModule here
-  standalone: true, // Mark this as a standalone component
   templateUrl: './requirements-page.component.html',
-  styleUrl: './requirements-page.component.css'
+  styleUrls: ['./requirements-page.component.css'],
+  standalone: true, // Ensure this is a standalone component
+  imports: [CommonModule, RouterModule] // Add required modules here
 })
-export class RequirementsPageComponent {
+export class RequirementsPageComponent implements OnInit {
+  projectId: string | null = null;
+  projectDetails: any = null; // To store the fetched project details
 
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+
+  ngOnInit(): void {
+    // Retrieve the project ID from the route parameters
+    this.projectId = this.route.snapshot.paramMap.get('id');
+    console.log('Project ID from route:', this.projectId); // Log the project ID
+    if (this.projectId) {
+      this.fetchProjectDetails(this.projectId);
+    }
+  }
+
+  fetchProjectDetails(id: string): void {
+    this.http.get(`http://localhost:8080/api/projects/${id}`).subscribe({
+      next: (data) => {
+        console.log('Fetched Project Details:', data); // Log the fetched data
+        this.projectDetails = data; // Assign the fetched project details
+      },
+      error: (err) => {
+        console.error('Error fetching project details:', err); // Log any errors
+      }
+    });
+  }
 }
