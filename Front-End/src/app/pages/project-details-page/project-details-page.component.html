@@ -18,14 +18,14 @@
     <ul>
       <li *ngIf="projectMembers?.length === 0">No team members found.</li>
       <li *ngFor="let member of projectMembers">
-        {{ member.fName }} {{ member.lName }} - {{ member.role }}
+        {{ member.firstName }} {{ member.lastName }}
       </li>
     </ul>
     <div class="label">Risks & Status:</div>
     <ul>
-      <li *ngIf="projectDetails?.risks?.length === 0">No risks found.</li>
-      <li *ngFor="let risk of projectDetails.risks">
-        {{ risk.description }} - Status: {{ risk.status }}
+      <li *ngIf="projectRisks?.length === 0">No risks found.</li>
+      <li *ngFor="let risk of projectRisks">
+        {{ risk.desc }} - Status: {{ risk.status }}
       </li>
     </ul>
   </div>

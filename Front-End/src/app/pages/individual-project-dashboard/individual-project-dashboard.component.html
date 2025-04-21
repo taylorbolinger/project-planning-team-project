@@ -9,8 +9,8 @@
 </header>
 <main>
     <!-- Display project name and summary dynamically -->
-    <h2 *ngIf="projectDetails">{{ projectDetails.name }}</h2>
-    <p *ngIf="projectDetails">{{ projectDetails.description }}</p>
+    <h2>{{ projectDetails.name }}</h2>
+    <p>{{ projectDetails.description }}</p>
 
     <div class="buttons">
         <a class="btn-card" [routerLink]="['/project-details-page', projectDetails.id]">Project Details</a>

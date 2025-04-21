@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router'; // Import RouterModule for route
 export class RequirementsPageComponent implements OnInit {
   projectId: string | null = null;
   projectDetails: any = null; // To store the fetched project details
+  requirements: any[] = []; // To store the filtered requirements
 
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
@@ -23,6 +24,7 @@ export class RequirementsPageComponent implements OnInit {
     console.log('Project ID from route:', this.projectId); // Log the project ID
     if (this.projectId) {
       this.fetchProjectDetails(this.projectId);
+      this.fetchAllRequirements(); // Fetch and filter requirements
     }
   }
 
@@ -34,6 +36,22 @@ export class RequirementsPageComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching project details:', err); // Log any errors
+      }
+    });
+  }
+
+  fetchAllRequirements(): void {
+    console.log(`Fetching all requirements for Project id ${this.projectId}`); // Log the project ID
+
+    this.http.get<any[]>(`http://localhost:8080/api/project-requirements/all`).subscribe({
+      next: (data: any[]) => {
+        console.log('All Requirements API Response:', data); // Log the API response
+        // Filter requirements by project ID
+        this.requirements = data.filter(requirement => requirement.project.id === this.projectId);
+        console.log('Filtered Requirements:', this.requirements); // Log the filtered requirements
+      },
+      error: (err) => {
+        console.error('Error fetching requirements:', err); // Log any errors
       }
     });
   }

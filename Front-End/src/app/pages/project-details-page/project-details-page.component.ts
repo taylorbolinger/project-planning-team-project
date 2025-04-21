@@ -30,20 +30,15 @@ export class ProjectDetailsPageComponent implements OnInit {
 
   fetchProjectDetails(id: string): void {
     console.log(`Fetching project details for ID: ${id}`); // Log the ID
-    this.http.get(`http://localhost:8080/api/projects/${id}`).subscribe({
-      next: (data) => {
+    this.http.get<any>(`http://localhost:8080/api/projects/${id}`).subscribe({
+      next: (data: any) => {
         console.log('API Response:', data); // Log the API response
         this.projectDetails = data; // Assign the fetched project details
 
         // Ensure projectDetails is loaded before calling these methods
         if (this.projectDetails && this.projectDetails.id) {
-          this.http.get(`http://localhost:8080/api/project-members`) // Fetch all members
-          next: (data) => {
-            this.projectMembers = data; // Assign the fetched project members
-            console.log('Project Members:', this.projectMembers); // Log the project members
-          }
-          
-          this.fetchAllProjectRisks(); // Fetch all risks and filter by projectId
+          this.fetchAllProjectMembers(); // Fetch all members
+          this.fetchAllProjectRisks(); // Fetch all risks
         } else {
           console.error('Project details are missing or invalid.');
         }
@@ -54,5 +49,35 @@ export class ProjectDetailsPageComponent implements OnInit {
     });
   }
 
-  
+  fetchAllProjectMembers(): void {
+    //console.log(`Fetching project members for Project ID: ${this.projectDetails.id}`); // Log the project ID
+
+    this.http.get<any[]>(`http://localhost:8080/api/project-members`).subscribe({
+      next: (data: any[]) => {
+        //console.log('All Project Members API Response:', data); // Log the API response
+        // Filter members by project.project.id
+        this.projectMembers = data.filter(member => member.project.id === this.projectDetails.id);
+        console.log('Filtered Project Members:', this.projectMembers); // Log the filtered members
+      },
+      error: (err) => {
+        console.error('Error fetching project members:', err); // Log any errors
+      }
+    });
+  }
+
+  // fetchAllProjectRisks(): void {
+  //   //console.log('Fetching all project risks'); // Log the action
+
+  //   this.http.get<any[]>(`http://localhost:8080/api/project-risks`).subscribe({
+  //     next: (data: any[]) => {
+  //       //console.log('All Project Risks API Response:', data); // Log the API response
+  //       // Filter risks by project.project.id
+  //       this.projectRisks = data.filter(risk => risk.project.id === this.projectDetails.id);
+  //       console.log('Filtered Project Risks:', this.projectRisks); // Log the filtered risks
+  //     },
+  //     error: (err) => {
+  //       console.error('Error fetching project risks:', err); // Log any errors
+  //     }
+  //   });
+  // }
 }
