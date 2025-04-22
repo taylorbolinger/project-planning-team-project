@@ -233,4 +233,6 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+
+Back-End/build/reports/problems/problems-report.html
 # End of https://www.toptal.com/developers/gitignore/api/intellij,gradle,java,eclipse

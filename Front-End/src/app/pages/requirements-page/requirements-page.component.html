@@ -1,0 +1,46 @@
+<header>
+  <a [routerLink]="'/dashboard'" class="logo">
+    <img src="assets/SoftwareXYZlogo.png" alt="SoftwareXYZ Logo">
+  </a>
+  <h1>Requirements</h1>
+  <a [routerLink]="'/dashboard'" class="home-icon">
+    <img src="assets/HomeIcon2.png" alt="Home Button" width="40" height="40">
+  </a>
+</header>
+<main>
+  <!-- Display project name -->
+  <h2 *ngIf="projectDetails">{{ projectDetails.name }}</h2>
+  <h3>Project Requirements</h3>
+
+  <div class="columns">
+    <!-- Functional Requirements -->
+    <div class="column">
+      <h4>Functional Requirements</h4>
+      <div *ngIf="functionalRequirements.length > 0; else noFunctional">
+        <div *ngFor="let requirement of functionalRequirements" class="box">
+          {{ requirement.description }} (Priority: {{ requirement.priority }})
+        </div>
+      </div>
+      <ng-template #noFunctional>
+        <p>No functional requirements found.</p>
+      </ng-template>
+      <button>Add Functional Requirement</button>
+    </div>
+
+    <!-- Non-Functional Requirements -->
+    <div class="column">
+      <h4>Non-Functional Requirements</h4>
+      <div *ngIf="nonFunctionalRequirements.length > 0; else noNonFunctional">
+        <div *ngFor="let requirement of nonFunctionalRequirements" class="box">
+          {{ requirement.description }} (Priority: {{ requirement.priority }})
+        </div>
+      </div>
+      <ng-template #noNonFunctional>
+        <p>No non-functional requirements found.</p>
+      </ng-template>
+      <button>Add Non-Functional Requirement</button>
+    </div>
+  </div>
+
+  <div *ngIf="!projectDetails">Loading project details...</div>
+</main>

@@ -1,0 +1,20 @@
+<header>
+    <a [routerLink]="'/dashboard'" class="logo">
+        <img src="assets/SoftwareXYZlogo.png" alt="SoftwareXYZ Logo">
+    </a>
+    <h1>Individual Project Dashboard</h1>
+    <a [routerLink]="'/dashboard'" class="home-icon">
+        <img src="assets/HomeIcon2.png" alt="Home Button" width="40" height="40">
+    </a>
+</header>
+<main>
+    <!-- Display project name and summary dynamically -->
+    <h2>{{ projectDetails.name }}</h2>
+    <p>{{ projectDetails.description }}</p>
+
+    <div class="buttons">
+        <a class="btn-card" [routerLink]="['/project-details-page', projectDetails.id]">Project Details</a>
+        <a class="btn-card" [routerLink]="['/requirements-page', projectDetails.id]">Project Requirements</a>
+        <a class="btn-card" [routerLink]="['/effort-tracking-summary-page', projectDetails.id]">Effort Tracking & Summary</a>
+    </div>
+</main>

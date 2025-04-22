@@ -24,7 +24,9 @@ interface ProjectManagerRepository : JpaRepository<ProjectManager, Long> {
 interface ProjectMemberRepository : JpaRepository<ProjectMember, Int>
 
 @Repository
-interface ProjectRequirementRepository : JpaRepository<ProjectRequirement, Int>
+interface ProjectRequirementRepository : JpaRepository<ProjectRequirement, Int> {
+    fun findByProjectId(projectId: Int): List<ProjectRequirement>
+}
 
 @Repository
 interface ProjectRiskRepository : JpaRepository<ProjectRisk, Int>
