@@ -102,12 +102,6 @@ in your browser to access the dashboard.
 
 ---
 
-## Website (If Hosted)
-
-*(Add a live hosted link here if the application is deployed.)*
-
----
-
 ## Application Overview
 
 ### Account Creation and Login
