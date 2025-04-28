@@ -13,7 +13,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
 	toolchain {
-     	languageVersion = JavaLanguageVersion.of(18)
+     	languageVersion = JavaLanguageVersion.of(17)
 	}
 }
 
@@ -46,7 +46,7 @@ dependencies {
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 kotlin {
-	jvmToolchain(18)
+	jvmToolchain(17)
 	compilerOptions {
 		freeCompilerArgs.addAll("-Xjsr305=strict")
 	}
