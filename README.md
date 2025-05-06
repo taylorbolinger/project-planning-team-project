@@ -4,6 +4,20 @@ A web-based project management tool developed for **SWE 6633 - Software Project 
 
 ---
 
+## 👩‍💻 My Contributions
+
+This was a collaborative project developed for our master’s-level Software Project Planning and Management course. I was responsible for:
+
+- Designing the user interface based on the Figma wireframe  
+- Implementing the **New Project page**, including form layout and styling  
+- Structuring the **Angular frontend** and setting up routing/navigation  
+- Leading the UI/UX decisions to ensure a clean, responsive experience  
+- Coordinating frontend/backend integration testing with teammates  
+
+> This repository is a personal copy maintained for portfolio use. You can view the original group repository [here](https://github.com/kokoAfantchao/Group-1-Software-Project-PlanMgt-Spring-Semester-2025).
+
+---
+
 ## Getting Started
 
 ### Prerequisites
